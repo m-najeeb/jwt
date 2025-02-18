@@ -12,11 +12,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  const user = {
-    id: 1,
-    username: "John",
-    email: "john@email.com",
-  };
+  const user = req.body;
 
   const accessToken = generateAccessToken(user);
   const refreshToken = jwt.sign({ user }, process.env.REFRESH_SECRET_KEY);
